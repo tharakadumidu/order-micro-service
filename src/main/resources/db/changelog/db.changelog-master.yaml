@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/create-tables.xml
+  - include:
+      file: db/changelog/insert-user-data.xml
+  - include:
+      file: db/changelog/insert-coffee-shop-data.xml
+  - include:
+      file: db/changelog/insert-menu-data.xml
+  - include:
+      file: db/changelog/insert-coffee-shop-menu-pricing-data.xml

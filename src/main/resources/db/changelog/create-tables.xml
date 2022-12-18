@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+  <changeSet id="01" author="tharaka">
+    <createTable tableName="coffee_shop"
+      remarks="Coffee Shop Data">
+      <column name="id" type="int" autoIncrement="true">
+        <constraints nullable="false" unique="true" primaryKey="true"/>
+      </column>
+      <column name="name" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="address" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="contact" type="varchar(30)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="opening_time" type="TIME">
+        <constraints nullable="false"/>
+      </column>
+      <column name="closing_time" type="TIME">
+        <constraints nullable="false"/>
+      </column>
+      <column name="owner_id" type="int" autoIncrement="true">
+        <constraints nullable="false"/>
+      </column>
+      <column name="queue_count" type="int" autoIncrement="true">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+
+    <createTable tableName="user"
+      remarks="Users Data">
+      <column name="id" type="int" autoIncrement="true">
+        <constraints nullable="false" unique="true" primaryKey="true"/>
+      </column>
+      <column name="name" type="varchar(100)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="role" type="varchar(20)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="user_name" type="varchar(20)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="password" type="varchar(20)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="score" type="int">
+        <constraints nullable="true"/>
+      </column>
+    </createTable>
+
+    <addForeignKeyConstraint baseTableName="coffee_shop" baseColumnNames="owner_id"
+      constraintName="fk_owner_id"
+      referencedTableName="user" referencedColumnNames="id"/>
+
+    <createTable tableName="menu"
+                 remarks="Menu Data">
+      <column name="id" type="int" autoIncrement="true">
+        <constraints nullable="false" unique="true" primaryKey="true"/>
+      </column>
+      <column name="name" type="varchar(100)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="description" type="varchar(255)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+
+    <createTable tableName="coffee_shop_menu_pricing"
+                 remarks="Menu Data">
+      <column name="id" type="int" >
+        <constraints nullable="false" unique="true" primaryKey="true"/>
+      </column>
+      <column name="menu_id" type="int" >
+        <constraints nullable="false" />
+      </column>
+      <column name="shop_id" type="int" >
+        <constraints nullable="false" />
+      </column>
+      <column name="price" type="double">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+
+    <addForeignKeyConstraint baseTableName="coffee_shop_menu_pricing" baseColumnNames="menu_id"
+                             constraintName="fk_menu_id"
+                             referencedTableName="menu" referencedColumnNames="id"/>
+    <addForeignKeyConstraint baseTableName="coffee_shop_menu_pricing" baseColumnNames="shop_id"
+                             constraintName="fk_coffee_shop_id"
+                             referencedTableName="coffee_shop" referencedColumnNames="id"/>
+
+    <createTable tableName="orders"
+                 remarks="Order Data">
+      <column name="id" type="int" autoIncrement="true">
+        <constraints nullable="false" unique="true" primaryKey="true"/>
+      </column>
+      <column name="customer_id" type="int">
+        <constraints nullable="false"/>
+      </column>
+      <column name="coffee_shop_id" type="int">
+        <constraints nullable="false"/>
+      </column>
+      <column name="price" type="double">
+        <constraints nullable="false"/>
+      </column>
+      <column name="status" type="varchar(20)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="queue_number" type="varchar(10)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="created_time" type="timestamp">
+        <constraints nullable="true"/>
+      </column>
+      <column name="expected_delivery_time" type="timestamp">
+        <constraints nullable="true"/>
+      </column>
+    </createTable>
+
+    <addForeignKeyConstraint baseTableName="orders" baseColumnNames="customer_id"
+                             constraintName="fk_order_customer_id"
+                             referencedTableName="user" referencedColumnNames="id"/>
+
+    <addForeignKeyConstraint baseTableName="orders" baseColumnNames="coffee_shop_id"
+                             constraintName="fk_order_shop_id"
+                             referencedTableName="coffee_shop" referencedColumnNames="id"/>
+
+    <createTable tableName="order_item"
+                 remarks="Order Item Data">
+      <column name="order_id" type="int" >
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="coffee_shop_menu_pricing_id" type="int" >
+        <constraints nullable="false"  primaryKey="true"/>
+      </column>
+    </createTable>
+
+    <addForeignKeyConstraint baseTableName="order_item" baseColumnNames="order_id"
+                             constraintName="fk_order_id"
+                             referencedTableName="orders" referencedColumnNames="id"/>
+    <addForeignKeyConstraint baseTableName="order_item" baseColumnNames="coffee_shop_menu_pricing_id"
+                             constraintName="fk_order_menu_id"
+                             referencedTableName="coffee_shop_menu_pricing" referencedColumnNames="id"/>
+
+  </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+  <changeSet id="03" author="tharaka">
+    <comment>Inserting Coffee Shop records</comment>
+    <insert tableName="coffee_shop">
+      <column name="id" valueNumeric="1"/>
+      <column name="name" value="Cafe So and So"/>
+      <column name="address" value="No.5, Main St, Panadura"/>
+      <column name="contact" value="+94567893"/>
+      <column name="opening_time" value="09:00:00"/>
+      <column name="closing_time" value="18:00:00"/>
+      <column name="owner_id" valueNumeric="1"/>
+      <column name="queue_count" valueNumeric="1"/>
+    </insert>
+    <insert tableName="coffee_shop">
+      <column name="id" valueNumeric="2"/>
+      <column name="name" value="Cafe Hut"/>
+      <column name="address" value="No.67/4, Cross St, Colombo"/>
+      <column name="contact" value="+94567894"/>
+      <column name="opening_time" value="10:00:00"/>
+      <column name="closing_time" value="20:00:00"/>
+      <column name="owner_id" valueNumeric="2"/>
+      <column name="queue_count" valueNumeric="2"/>
+    </insert>
+  </changeSet>
+</databaseChangeLog>
