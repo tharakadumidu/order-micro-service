@@ -8,6 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalTime;
 
+/**
+ * Holds meta data for CoffeeShop database entity
+ *
+ * @author Tharaka Weheragoda
+ */
+
 @Entity
 @Table(name = "coffee_shop")
 @Data

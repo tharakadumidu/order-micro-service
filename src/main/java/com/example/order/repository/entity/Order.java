@@ -11,6 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 
+/**
+ * Holds meta data for Order database entity
+ *
+ * @author Tharaka Weheragoda
+ */
 @Entity
 @Data
 @Table(name = "orders")

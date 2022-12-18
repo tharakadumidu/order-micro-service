@@ -4,6 +4,11 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
+/**
+ * Intermediate class to hold calculated nextQueueNumber and expectedDeliveryTime
+ *
+ * @author Tharaka Weheragoda
+ */
 @Data
 public class OrderMetaData {
     private String nextQueueNumber;

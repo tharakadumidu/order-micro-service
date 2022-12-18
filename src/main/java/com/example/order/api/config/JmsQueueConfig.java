@@ -6,6 +6,11 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.jms.Queue;
 
+/**
+ * Configuration classr.
+ *
+ * @author Tharaka Weheragoda
+ */
 @Configuration
 public class JmsQueueConfig {
 

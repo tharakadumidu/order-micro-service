@@ -7,6 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Holds meta data for CoffeeShopMenuPricing database entity
+ *
+ * @author Tharaka Weheragoda
+ */
 @Entity
 @Data
 @Table(name = "coffee_shop_menu_pricing")

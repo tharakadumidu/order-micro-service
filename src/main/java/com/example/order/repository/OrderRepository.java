@@ -6,6 +6,11 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * Order repository
+ *
+ * @author Tharaka Weheragoda
+ */
 @Repository
 public interface OrderRepository extends CrudRepository<Order, Integer> {
 
